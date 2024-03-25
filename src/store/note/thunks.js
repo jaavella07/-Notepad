@@ -17,7 +17,7 @@ export const visualizeNotes = () => {
 export const removeNotes = (id) => {
     return async (dispatch) => {
       try {
-        await noteService.deleteNotesId(id);
+        const noteremove = await noteService.deleteNotesId(id);
         dispatch(deleteNote(id));
       } catch (error) {
         console.error("Error al eliminar la nota:", error);

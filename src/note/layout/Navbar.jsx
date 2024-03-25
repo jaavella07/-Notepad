@@ -3,9 +3,9 @@
 export const Navbar = () => {
   return (
     <>
-      <nav className="navbar bg-primary" data-bs-theme="dark">
+      <nav className="navbar bg-primary " >
         <div className="container-fluid">
-          <a className="navbar-brand" >
+          <a className="navbar-brand text-light" >
              Notepad
           </a>
         </div>

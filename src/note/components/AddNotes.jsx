@@ -18,7 +18,7 @@ export const AddNotes = () => {
 
         const nuevaNota = await noteService.addNote(noteDescription);
         //console.log("la nueva nota es", nuevaNota);
-        
+
         dispatch(createNote(nuevaNota))
         onResetForm();
     }
@@ -27,7 +27,7 @@ export const AddNotes = () => {
         <>
             <h1>Crear Nota</h1>
             <form onSubmit={addNotes}>
-                <div>
+                <div >
                     <input
                         type="text"
                         name="noteDescription"
@@ -35,7 +35,8 @@ export const AddNotes = () => {
                         onChange={onInputChange}
                     />
                 </div>
-                <button type="submit">agregar</button>
+                <br />
+                <button type="submit" className="btn btn-success">Agregar</button>
             </form>
         </>
 
