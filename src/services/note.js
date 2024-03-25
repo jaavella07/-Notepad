@@ -27,11 +27,10 @@ const addNote = async ( noteDescription ) => {
   }
 }
 
-const deleteNotes = async ( id ) => {
-  const object = { id }
+const deleteNotesId = async ( id ) => {
   try {
-    const response = await axios.delete(baseUrl, object)
-    console.log(response);
+    const response = await axios.delete(`${baseUrl}/${id}`)
+    //console.log(response);
     return response.data
   }
   catch (error) {
@@ -43,5 +42,5 @@ const deleteNotes = async ( id ) => {
 export default {
   getAll,
   addNote,
-  deleteNotes
+  deleteNotesId
 }

@@ -5,14 +5,23 @@ import { deleteNote, readNote } from './noteSlice'
 
 export const visualizeNotes = () => {
     return async dispatch => {
-        const viewNote = await noteService.getAll()
-        dispatch(readNote(viewNote))
+        try {
+            const viewNote = await noteService.getAll()
+            dispatch(readNote(viewNote))
+        } catch (error) {
+            console.error("Error al leer la nota:", error); 
+        }
     }
 }
 
-export const removeNotes = ( ) => {
-    return async dispatch => {
-        const removeNote = await noteService.deleteNotes()
-        dispatch(deleteNote(removeNote))
-    }
-}
+export const removeNotes = (id) => {
+    return async (dispatch) => {
+      try {
+        await noteService.deleteNotesId(id);
+        dispatch(deleteNote(id));
+      } catch (error) {
+        console.error("Error al eliminar la nota:", error);
+      }
+    };
+  };
+

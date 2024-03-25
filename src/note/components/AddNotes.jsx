@@ -17,7 +17,7 @@ export const AddNotes = () => {
         event.preventDefault();
 
         const nuevaNota = await noteService.addNote(noteDescription);
-        console.log("la nueva nota es", nuevaNota);
+        //console.log("la nueva nota es", nuevaNota);
         
         dispatch(createNote(nuevaNota))
         onResetForm();

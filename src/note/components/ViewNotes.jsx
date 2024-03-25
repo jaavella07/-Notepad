@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { removeNotes, visualizeNotes } from '../../store/note/thunks';
-//import { deleteNote } from '../../store/note/noteSlice';
+import {  removeNotes, visualizeNotes } from '../../store/note/thunks';
 
 
 export const ViewNotes = () => {
@@ -13,18 +12,11 @@ export const ViewNotes = () => {
         dispatch(visualizeNotes())    
     }, [])
 
-    const deleteNotes = () =>{
 
 
-
-      const uid = visualizerNote
-      //console.log("id", uid);
-
-      // const eliminarNota = await noteService.deleteNote(uid);
-      // console.log("la nueva nota es", eliminarNota);
-  
+    const deleteNotes = async ( id ) =>{
+      const uid = id
       dispatch(removeNotes(uid))
-
   }
 
   return (
@@ -34,7 +26,7 @@ export const ViewNotes = () => {
         visualizerNote.map((note)=>(
           <div key={note.id}>
             <p>{note.noteDescription}</p>
-            <button onClick={deleteNotes}>Eliminar</button>
+            <button onClick={()=> deleteNotes(note.id)}>Eliminar</button>
           </div>
         ))
     }
