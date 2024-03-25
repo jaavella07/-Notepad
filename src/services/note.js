@@ -27,7 +27,21 @@ const addNote = async ( noteDescription ) => {
   }
 }
 
+const deleteNotes = async ( id ) => {
+  const object = { id }
+  try {
+    const response = await axios.delete(baseUrl, object)
+    console.log(response);
+    return response.data
+  }
+  catch (error) {
+    console.log("error en la data",error)
+  }
+}
+
+
 export default {
   getAll,
-  addNote
+  addNote,
+  deleteNotes
 }

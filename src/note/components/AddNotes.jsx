@@ -1,6 +1,6 @@
+import noteService from "../../services/note"
 import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "../../hooks/useForm"
-import noteService from "../../services/note"
 import { createNote } from "../../store/note/noteSlice"
 
 export const AddNotes = () => {

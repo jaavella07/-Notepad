@@ -19,14 +19,28 @@ export const noteSlice = createSlice({
         },
         readNote: (state,  action  ) => {
             const read = action.payload
-            console.log('desde readNote',read)
+            //console.log('desde readNote',read)
             return read;
         },
         updateNote: (state,  action  ) => {
             console.log(state)
         },
         deleteNote: (state,  action  ) => {
-            console.log(state)
+
+            const del = action.payload
+
+            console.log("slice",del);
+
+
+            // const noteDelete = state.find(note => note.id === action.payload)
+            // console.log(noteDelete);
+            // if (noteDelete) {
+            //     state.splice(state.indexOf(noteDelete), 1)
+            // }
+            // console.log(noteDelete);
+            return del
+
+
         },
     }
 });
