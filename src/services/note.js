@@ -37,10 +37,24 @@ const deleteNotesId = async ( id ) => {
     console.log("error en la data",error)
   }
 }
+const updateNotesId = async ( id,noteDescription ) => {
+  try {
+    const objet = { noteDescription }
+    const response = await axios.put(`${baseUrl}/${id}`,objet)
+    console.log("Estado de mi nota",response);
+    return response.data
+  }
+  catch (error) {
+    console.log("error en la data",error)
+  }
+}
+
+
 
 
 export default {
   getAll,
   addNote,
-  deleteNotesId
+  deleteNotesId,
+  updateNotesId
 }

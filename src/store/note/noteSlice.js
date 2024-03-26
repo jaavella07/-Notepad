@@ -18,7 +18,15 @@ export const noteSlice = createSlice({
             return read;
         },
         updateNote: (state, action) => {
-            console.log(state)
+
+            const updatedNote = action.payload;
+            console.log("Slice",updatedNote)
+            const index = state.findIndex(note => note.id === updatedNote);
+            if (index !== -1) {
+                state[index] = updatedNote;
+            }
+
+
         },
         deleteNote: (state, action) => {
             const id = action.payload

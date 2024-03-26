@@ -1,12 +1,19 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { removeNotes, visualizeNotes } from '../../store/note/thunks';
+import { removeNotes, visualizeNotes, updatedNote } from '../../store/note/thunks';
+
+
 
 
 export const ViewNotes = () => {
 
   const visualizerNote = useSelector((state) => state.note)
   const dispatch = useDispatch();
+  
+
+
+
+
 
   useEffect(() => {
     dispatch(visualizeNotes())
@@ -19,9 +26,9 @@ export const ViewNotes = () => {
     dispatch(removeNotes(uid))
   }
 
-  const updateNotes = () => {
+  const updateNotes = (id,noteDescription) => {
 
-    alert("Agregar logica")
+    dispatch(updatedNote(noteDescription))
 
   }
 
@@ -29,20 +36,24 @@ export const ViewNotes = () => {
     <>
       <h1>Visualizacion de Notas</h1>
 
-      {
+      <div className="notes-grid" >
+        {
+          visualizerNote.map((note) => ( 
+            <div key={note.id} className="note-item"  >
+              <div className="notes-header">
+                <textarea className='textarea-update' defaultValue={note.noteDescription} ></textarea>
+                <button className="btn btn-primary" onClick={() => updateNotes(note.id, note.noteDescription)}>
+                  Actualizar
+                </button>
+                <button className="btn btn-danger mx-2" onClick={() => deleteNotes(note.id)}>
+                  Eliminar
+                </button>
+              </div>
+            </div>
+          ))
+        }
+      </div>
 
-        visualizerNote.map((note) => (
-          <div className="card-note" key={note.id}>
-            <textarea className='textarea-update'>{note.noteDescription}</textarea>
-            <button className="btn btn-primary" onClick={() => updateNotes(note.id)}>
-              Actualizar
-            </button>
-            <button className="btn btn-danger mx-2" onClick={() => deleteNotes(note.id)}>
-              Eliminar
-            </button>
-          </div>
-        ))
-      }
 
     </>
   )
