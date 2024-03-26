@@ -1,0 +1,48 @@
+body {
+    background-color: #365486;
+    font-family: "Edu NSW ACT Foundation", cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 20px;
+}
+
+nav {
+    background-color: #0F1035;
+}
+
+h1 {
+    color: #0F1035;
+}
+
+.row{
+    width: 1300px;
+}
+.card-add {
+    background-color: #DCF2F1;
+    padding: 15px;
+    margin-top: 20px;
+    margin-left: 20px; 
+    width: 400px;
+    height: 500px;
+    border-radius: 10px;
+}
+.card-view{
+    background-color: #DCF2F1;
+    padding: 15px;
+    margin-top:20px;  
+    width: 890px;
+    height: 500px;
+    border-radius: 10px;
+    overflow-y: scroll;
+}
+.card-note{
+    padding: 5px;
+}
+.textarea{
+    width: 370px;
+    height: 370px;
+}
+.textarea-update{
+    width: 820px;
+    height: 100px;
+}

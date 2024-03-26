@@ -19,7 +19,7 @@ export const ViewNotes = () => {
     dispatch(removeNotes(uid))
   }
 
-  const updateNotes =  () => {
+  const updateNotes = () => {
 
     alert("Agregar logica")
 
@@ -28,19 +28,22 @@ export const ViewNotes = () => {
   return (
     <>
       <h1>Visualizacion de Notas</h1>
+
       {
+
         visualizerNote.map((note) => (
-          <div key={note.id}>
-            <p>{note.noteDescription}</p>
+          <div className="card-note" key={note.id}>
+            <textarea className='textarea-update'>{note.noteDescription}</textarea>
             <button className="btn btn-primary" onClick={() => updateNotes(note.id)}>
               Actualizar
-            </button> 
+            </button>
             <button className="btn btn-danger mx-2" onClick={() => deleteNotes(note.id)}>
               Eliminar
             </button>
           </div>
         ))
       }
+
     </>
   )
 }

@@ -28,15 +28,18 @@ export const AddNotes = () => {
             <h1>Crear Nota</h1>
             <form onSubmit={addNotes}>
                 <div >
-                    <input
+                    <textarea
+                        className="textarea"
                         type="text"
                         name="noteDescription"
                         value={noteDescription}
                         onChange={onInputChange}
                     />
                 </div>
-                <br />
-                <button type="submit" className="btn btn-success">Agregar</button>
+                <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="submit" className="btn btn-success">Agregar</button>
+
+                </div>
             </form>
         </>
 
