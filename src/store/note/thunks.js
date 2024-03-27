@@ -1,5 +1,5 @@
 import noteService from '../../services/note'
-import { deleteNote, readNote, updateNote } from './noteSlice'
+import { deleteNote, readNote, updateNotes } from './noteSlice'
 
 
 
@@ -23,13 +23,14 @@ export const removeNotes = (id) => {
         console.error("Error al eliminar la nota:", error);
       }
     };
-}
-
-export const updatedNote = (id,noteDescription) => {
-
+  }
+  
+  export const updatedNote = (id) => {
+    
     return async (dispatch) => {
       try {
-        dispatch(updateNote(id,noteDescription));
+        const noteupdate = await noteService.updateNotesId(id);
+        dispatch(updateNotes(id));
       } catch (error) {
         console.error("Error al actualizar la nota:", error);
       }

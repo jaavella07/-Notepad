@@ -17,15 +17,20 @@ export const noteSlice = createSlice({
             const read = action.payload
             return read;
         },
-        updateNote: (state, action) => {
+        updateNotes: (state, action) => {
 
+            // const updatedNote = action.payload;
+            // console.log("Slice",updatedNote)
+            // const index = state.findIndex(note => note.id === updatedNote);
+            // if (index !== -1) {
+            //     state[index] = updatedNote;
+            // }
+            console.log("Acción de actualización recibida:", action);
             const updatedNote = action.payload;
-            console.log("Slice",updatedNote)
-            const index = state.findIndex(note => note.id === updatedNote);
-            if (index !== -1) {
-                state[index] = updatedNote;
-            }
-
+            console.log("Nota actualizada:", updatedNote);
+            return state.map(note =>
+                note.id === updatedNote.id ? { ...note, ...updatedNote } : note
+            );
 
         },
         deleteNote: (state, action) => {
@@ -37,6 +42,6 @@ export const noteSlice = createSlice({
 });
 
 
-export const { createNote, readNote, updateNote, deleteNote } = noteSlice.actions;
+export const { createNote, readNote, updateNotes, deleteNote } = noteSlice.actions;
 
 

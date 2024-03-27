@@ -15,7 +15,7 @@ export const AddNotes = () => {
 
     const addNotes = async (event) => {
         event.preventDefault();
-
+        //console.log("Nota agregada",noteDescription)
         const nuevaNota = await noteService.addNote(noteDescription);
         //console.log("la nueva nota es", nuevaNota);
 

@@ -37,10 +37,11 @@ const deleteNotesId = async ( id ) => {
     console.log("error en la data",error)
   }
 }
-const updateNotesId = async ( id,noteDescription ) => {
+const updateNotesId = async ( id ) => {
   try {
-    const objet = { noteDescription }
-    const response = await axios.put(`${baseUrl}/${id}`,objet)
+    //const data =  {noteDescription} 
+    console.log("JSON", id)
+    const response = await axios.put(`${baseUrl}/${id}`)
     console.log("Estado de mi nota",response);
     return response.data
   }
