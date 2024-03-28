@@ -39,9 +39,8 @@ const deleteNotesId = async (id) => {
 }
 const updateNotesId = async (id,noteDescription) => {
   const object = { id,noteDescription }
-  console.log("JSON", id)
+  //console.log("JSON", id)
   try {
-    //const data =  {noteDescription} 
     const response = await axios.put(`${baseUrl}/${id}`,object )
     console.log("Estado de mi nota", response);
     return response.data

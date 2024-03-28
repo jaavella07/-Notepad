@@ -15,9 +15,8 @@ export const AddNotes = () => {
 
     const addNotes = async (event) => {
         event.preventDefault();
-        //console.log("Nota agregada",noteDescription)
         const nuevaNota = await noteService.addNote(noteDescription);
-        //console.log("la nueva nota es", nuevaNota);
+        //console.log("La nueva nota es", nuevaNota);
 
         dispatch(createNote(nuevaNota))
         onResetForm();
@@ -25,11 +24,12 @@ export const AddNotes = () => {
 
     return (
         <>
-            <h1>Crear Nota</h1>
+            <h1>Crear notas</h1>
             <form onSubmit={addNotes}>
                 <div >
                     <textarea
                         className="textarea"
+                        placeholder="Agregar nueva nota"
                         type="text"
                         name="noteDescription"
                         value={noteDescription}
@@ -38,7 +38,6 @@ export const AddNotes = () => {
                 </div>
                 <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                     <button type="submit" className="btn btn-success">Agregar</button>
-
                 </div>
             </form>
         </>
