@@ -15,11 +15,11 @@ const getAll = async () => {
 }
 
 
-const addNote = async ( noteDescription ) => {
+const addNote = async (noteDescription) => {
   const object = { noteDescription }
   try {
     const response = await axios.post(baseUrl, object)
-    //console.log(response);
+    console.log(response);
     return response.data
   }
   catch (error) {
@@ -27,26 +27,27 @@ const addNote = async ( noteDescription ) => {
   }
 }
 
-const deleteNotesId = async ( id ) => {
+const deleteNotesId = async (id) => {
   try {
     const response = await axios.delete(`${baseUrl}/${id}`)
     //console.log(response);
     return response.data
   }
   catch (error) {
-    console.log("error en la data",error)
+    console.log("error en la data", error)
   }
 }
-const updateNotesId = async ( id ) => {
+const updateNotesId = async (id,noteDescription) => {
+  const object = { id,noteDescription }
+  console.log("JSON", id)
   try {
     //const data =  {noteDescription} 
-    console.log("JSON", id)
-    const response = await axios.put(`${baseUrl}/${id}`)
-    console.log("Estado de mi nota",response);
+    const response = await axios.put(`${baseUrl}/${id}`,object )
+    console.log("Estado de mi nota", response);
     return response.data
   }
   catch (error) {
-    console.log("error en la data",error)
+    console.log("error en la data", error)
   }
 }
 

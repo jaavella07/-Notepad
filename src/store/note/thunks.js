@@ -29,7 +29,7 @@ export const removeNotes = (id) => {
     
     return async (dispatch) => {
       try {
-        const noteupdate = await noteService.updateNotesId(id);
+        //const noteupdate = await noteService.updateNotesId(id);
         dispatch(updateNotes(id));
       } catch (error) {
         console.error("Error al actualizar la nota:", error);

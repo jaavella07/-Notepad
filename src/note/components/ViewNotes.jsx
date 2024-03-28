@@ -1,3 +1,4 @@
+import noteService from "../../services/note"
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeNotes, visualizeNotes, updatedNote } from '../../store/note/thunks';
@@ -27,12 +28,13 @@ export const ViewNotes = () => {
     dispatch(removeNotes(uid))
   }
 
-  const updateNoteDescription = (id, newNoteDescription) => {
+  const updateNoteDescription = async (id, noteDescription) => {
 
-    console.log("ID de la nota:", id);
-    console.log("Nueva descripción de la nota:", newNoteDescription);
-
-    dispatch(updatedNote({ id, noteDescription: newNoteDescription }));
+    const nota = {id,noteDescription}
+    console.log("Nota capturada:", nota);
+    const noteupdate = await noteService.updateNotesId(id,noteDescription);
+    console.log("noteService:", noteupdate);
+    dispatch(updatedNote(nota));
   }
 
   return (
@@ -45,14 +47,14 @@ export const ViewNotes = () => {
             <div key={note.id} className="note-item"  >
               <div className="notes-header">
                 <textarea
-                  value={note.noteDescription} // Cambiado a 'value' en lugar de 'defaultValue'
+                  value={note.noteDescription}
                   className="textarea-update"
                   name="noteDescription"
                   onChange={(e) => updateNoteDescription(note.id, e.target.value)} // Manejar cambios en el textarea
                 ></textarea>
-                <button className="btn btn-primary" onClick={() => updateNoteDescription(note.id, note.noteDescription)}>
+                {/* <button className="btn btn-primary" onClick={() => updateNoteDescription(note.id, note.noteDescription)}>
                   Actualizar
-                </button>
+                </button> */}
                 <button className="btn btn-danger mx-2" onClick={() => deleteNotes(note.id)}>
                   Eliminar
                 </button>
